@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:5
+    ports:
+      - ${PORT}:6379
+    deploy:
+      mode: global
+      resources:
+        limits:
+          memory: ${MAX_MEMORY}
+        reservations:
+          memory: 50M
+    volumes:
+      - redis_data:/data
+      
+volumes:
+  redis_data:

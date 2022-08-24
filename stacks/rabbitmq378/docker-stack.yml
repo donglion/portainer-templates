@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  rabbitmq:
+    image: donglion426/rabbitmq-delayed:3.7.8-management
+    ports:
+      - ${PORT}:5672
+      - ${MANAGEMENT_PORT}:15672
+    deploy:
+      mode: global
+      resources:
+        limits:
+          memory: ${MAX_MEMORY}
+        reservations:
+          memory: 200M
+    environment:
+      - HOSTNAME=rabbitmq
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=${ROOT_PASSWORD}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq_data:

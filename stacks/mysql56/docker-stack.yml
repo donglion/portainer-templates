@@ -10,7 +10,7 @@ services:
         limits:
           memory: ${MAX_MEMORY}
         reservations:
-          memory: ${MIN_MEMORY}
+          memory: 200M
     environment:
       - MYSQL_ROOT_PASSWORD=${ROOT_PASSWORD}
     volumes:
